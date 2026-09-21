@@ -1,0 +1,61 @@
+blueprint:
+  name: Kingspan BAGA alerts
+  description: >-
+    Send a push notification to the Home Assistant Companion app when your
+    Kingspan BAGA installation loses power or reports a problem (flocculant
+    low, tank filling up). Push notifications are free — no SMS subscription
+    from Kingspan needed.
+  domain: automation
+  source_url: https://github.com/joepherrmann/ha-kingspan-baga/blob/main/blueprints/kingspan_baga_alerts.yaml
+  input:
+    power_sensor:
+      name: Power sensor
+      description: The BAGA "Power" sensor. You get a notification when it turns off.
+      selector:
+        entity:
+          filter:
+            integration: kingspan_baga
+            domain: binary_sensor
+            device_class: power
+    problem_sensors:
+      name: Problem sensors
+      description: >-
+        BAGA problem sensors to alert on, e.g. "Flocculant low" and
+        "Tank filling up".
+      default: []
+      selector:
+        entity:
+          multiple: true
+          filter:
+            integration: kingspan_baga
+            domain: binary_sensor
+            device_class: problem
+    notify_device:
+      name: Phone
+      description: Companion-app device that receives the notifications.
+      selector:
+        device:
+          filter:
+            integration: mobile_app
+triggers:
+  - trigger: state
+    entity_id: !input power_sensor
+    from: "on"
+    to: "off"
+    id: power
+  - trigger: state
+    entity_id: !input problem_sensors
+    from: "off"
+    to: "on"
+    id: problem
+actions:
+  - variables:
+      notify_device: !input notify_device
+  - action: notify.mobile_app_{{ device_attr(notify_device, "name") | slugify }}
+    data:
+      title: Kingspan BAGA
+      message: >-
+        {% if trigger.id == 'power' %}Power failure at the wastewater
+        unit!{% else %}{{ trigger.to_state.name }}{% endif %}
+mode: queued
+max: 10

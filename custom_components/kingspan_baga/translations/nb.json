@@ -1,0 +1,113 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "description": "Logg inn med mittBAGA-kontoen din. Denne uoffisielle integrasjonen bruker samme skytjeneste som mittBAGA-appen.",
+        "data": {
+          "email": "E-post",
+          "password": "Passord"
+        }
+      },
+      "reauth_confirm": {
+        "description": "Passordet for {email} fungerer ikke lenger. Skriv inn det nye passordet.",
+        "data": {
+          "password": "Passord"
+        }
+      },
+      "reconfigure": {
+        "data": {
+          "email": "E-post",
+          "password": "Passord"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Ugyldig pålogging",
+      "cannot_connect": "Kunne ikke koble til",
+      "unknown": "Uventet feil"
+    },
+    "abort": {
+      "already_configured": "Kontoen er allerede konfigurert",
+      "reauth_successful": "Ny pålogging vellykket",
+      "wrong_account": "Denne påloggingen tilhører en annen konto."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "scan_interval": "Oppdateringsintervall",
+          "connectivity_days": "Dager uten melding før anlegget regnes som frakoblet",
+          "lang": "Språk for hendelsesbeskrivelser"
+        }
+      }
+    }
+  },
+  "selector": {
+    "lang": {
+      "options": {
+        "auto": "Automatisk (Home Assistants språk)",
+        "sv": "Svensk",
+        "en": "Engelsk"
+      }
+    }
+  },
+  "entity": {
+    "event": {
+      "activity": {
+        "name": "Hendelse"
+      }
+    },
+    "binary_sensor": {
+      "connectivity": {
+        "name": "GSM-tilkobling"
+      },
+      "flocculant_low": {
+        "name": "Lavt nivå fellingsmiddel"
+      },
+      "power": {
+        "name": "Strøm"
+      },
+      "tank_filling": {
+        "name": "Tanken fylles opp"
+      }
+    },
+    "sensor": {
+      "last_event": {
+        "name": "Siste hendelse"
+      },
+      "last_event_time": {
+        "name": "Tid for siste hendelse"
+      },
+      "last_emptied": {
+        "name": "Sist tømt"
+      },
+      "unread_messages": {
+        "name": "Uleste meldinger"
+      },
+      "tank_level": {
+        "name": "Nivå i tank"
+      },
+      "dosing_pump_runtime": {
+        "name": "Driftstid doseringspumpe"
+      },
+      "fuse_f1": {
+        "name": "Sikring F1"
+      },
+      "last_service": {
+        "name": "Siste service"
+      },
+      "next_service": {
+        "name": "Neste service"
+      }
+    }
+  },
+  "exceptions": {
+    "command_pending": {
+      "message": "En kommando venter allerede på svar fra anlegget."
+    },
+    "command_cooldown": {
+      "message": "Vent et minutt mellom kommandoer; hver kommando sendes til anlegget (trolig via SMS)."
+    }
+  }
+}

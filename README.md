@@ -51,7 +51,14 @@ description language) are available on the integration afterwards. Polling runs
 hourly by default (configurable from 5 minutes up to 24 hours) — lower it if
 you want faster power-failure alerts.
 
-## Example automation
+## Notifications without SMS
+
+Kingspan charges for SMS alerts; Home Assistant push notifications are free.
+Import the ready-made blueprint and pick your BAGA sensors and your phone:
+
+[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fjoepherrmann%2Fha-kingspan-baga%2Fblob%2Fmain%2Fblueprints%2Fkingspan_baga_alerts.yaml)
+
+Or roll your own automation:
 
 ```yaml
 automation:
