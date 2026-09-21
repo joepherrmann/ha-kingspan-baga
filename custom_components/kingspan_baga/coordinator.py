@@ -270,9 +270,14 @@ class BagaCoordinator(DataUpdateCoordinator[dict[str, MachineData]]):
 
         start_row = PAGE_SIZE
         while unresolved() and len(messages) < FIRST_SETUP_MAX_MESSAGES:
-            page = await self.client.get_messages(
-                machine_id, start_row=start_row, limit=PAGE_SIZE
-            )
+            try:
+                page = await self.client.get_messages(
+                    machine_id, start_row=start_row, limit=PAGE_SIZE
+                )
+            except BagaApiError:
+                # Paging past the end of the history does not return an empty
+                # list but a localized "no messages found" error.
+                break
             if not page:
                 break
             known = {m.id for m in messages}

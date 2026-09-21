@@ -47,7 +47,8 @@ folder and restart.
 
 *Settings → Devices & services → Add integration → Kingspan BAGA* and sign in
 with your mittBAGA account. Options (polling interval, connectivity window,
-description language) are available on the integration afterwards.
+description language) are available on the integration afterwards. Polling runs
+every 15 minutes by default (configurable from 5 minutes up to 24 hours).
 
 ## Example automation
 
@@ -56,7 +57,7 @@ automation:
   - alias: "Septic tank power failure"
     triggers:
       - trigger: state
-        entity_id: binary_sensor.idfjarden_16_power_failure
+        entity_id: binary_sensor.septic_tank_power_failure
         to: "on"
     actions:
       - action: notify.mobile_app_phone

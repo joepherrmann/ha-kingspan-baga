@@ -141,7 +141,7 @@ De client in v1 **staat in de repo zelf**. Voor HA core moet hij later naar PyPI
 
 ### coordinator.py
 - Eén `DataUpdateCoordinator` per account, met data per machine_id.
-- **Snel (standaard 15 min, instelbaar 5–60):** `get_user_machines` + `get_messages(limit=20)` per machine.
+- **Snel (standaard 15 min, instelbaar 5–1440):** `get_user_machines` + `get_messages(limit=20)` per machine.
 - **Traag (elke 6 uur, in dezelfde coordinator met een timestamp):** `get_machine_info`, `get_message_types`, `get_commands`.
 - Houdt `last_seen_message_id` per machine bij (**als int vergelijken**: de API geeft strings, en lexicografisch is "999" > "13237434"). Nieuwe berichten gaan naar de event-entiteit.
   - **Allereerste setup** (geen Store-data): alleen de baseline zetten, geen events afvuren.
@@ -238,9 +238,10 @@ DeviceInfo: `manufacturer="Kingspan BAGA"`, `model=machine_type.name`, `name=add
    - de vorm van een verkeerd wachtwoord in de config flow (§1 ⚠️)
    - verloop/ongeldigheid van de key (key ongeldig maken door opnieuw in te loggen in de app → zien of de oude key blijft werken; dan weten we ook of er één sessie per account geldt)
    - `lang=en/nl` bij de beschrijvingen
-   - de semantiek van `start_row`/`limit` (telt het groepen of berichten?) voor de diepe paginering
+   - ~~de semantiek van `start_row`/`limit`~~ Beantwoord 21-9: voorbij het einde van de historie geeft de server een fout ("Inga meddelanden hittade") in plaats van een lege lijst; de paginering breekt daar nu op af (v0.1.1)
    - één druk op "Tankniveau opvragen" → snelle modus → sensor
 4. **Een paar dagen draaien.** Kijken of events dubbel binnenkomen of gemist worden en of er in de log fouten staan over de rate limit.
+4b. **Icoon:** PR naar `home-assistant/brands` met een generiek icoon voor `kingspan_baga` (geen Kingspan-logo). Alleen na akkoord van Joep.
 5. **Publiceren** (na akkoord): repo `joepherrmann/ha-kingspan-baga` publiek, topics `home-assistant`, `hacs`,
    `home-assistant-custom-component`, release v0.1.0. Eventueel later een PR naar HACS default en `home-assistant/brands`.
 6. **Automatiseringen voor het huisje** (apart, in Joeps HA): meldingen bij stroomuitval, vlokmiddel laag en tank vol, plus een

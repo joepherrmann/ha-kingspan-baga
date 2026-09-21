@@ -100,6 +100,25 @@ async def test_new_message_fires_event(
     assert event.attributes["created"] == fired_at
 
 
+async def test_setup_survives_end_of_history(
+    hass: HomeAssistant, patch_client: AsyncMock
+) -> None:
+    """Paging past the end raises an API error; setup must still succeed."""
+    from custom_components.kingspan_baga.api import BagaApiError
+
+    def messages(machine_id, *, start_row=0, limit=20):
+        if start_row == 0:
+            return list(DEFAULT_MESSAGES)
+        raise BagaApiError("Inga meddelanden hittade")
+
+    patch_client.get_messages.side_effect = messages
+    entry = await setup_entry(hass)
+    assert entry.state is ConfigEntryState.LOADED
+    # The tank pair never appeared in the reachable history: stays unknown.
+    tank = hass.states.get(get_entity_id(hass, f"{MACHINE_ID}_tank_filling"))
+    assert tank.state == "off" or tank.state == "unknown"
+
+
 async def test_unload(hass: HomeAssistant, patch_client: AsyncMock) -> None:
     entry = await setup_entry(hass)
     assert await hass.config_entries.async_unload(entry.entry_id)

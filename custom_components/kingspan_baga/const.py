@@ -11,9 +11,10 @@ CONF_LANG = "lang"
 CONF_CONNECTIVITY_DAYS = "connectivity_days"
 CONF_SCAN_INTERVAL = "scan_interval"
 
+# Polling is in minutes; configurable 5 min - 24 h.
 DEFAULT_SCAN_INTERVAL_MIN = 15
 MIN_SCAN_INTERVAL_MIN = 5
-MAX_SCAN_INTERVAL_MIN = 60
+MAX_SCAN_INTERVAL_MIN = 1440
 # The unit can be silent for weeks (19-day gaps observed); 30 days default.
 DEFAULT_CONNECTIVITY_DAYS = 30
 
