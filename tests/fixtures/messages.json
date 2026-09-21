@@ -1,0 +1,65 @@
+{
+  "HEAD": { "action": "get_machine_messages", "status": "SUCCESS" },
+  "DATA": [
+    {
+      "info_code": {
+        "info_code": "13590",
+        "description": "GSM Modul har hittat nät! OK.",
+        "classification_code": "45",
+        "classification_name": "Informativ",
+        "is_command": false
+      },
+      "data": "B1359,00001727",
+      "number_code_hour_messages": 1,
+      "message_list": [
+        {
+          "id": "13237434",
+          "phone_number": "+(46)0000000000",
+          "info_code": {
+            "info_code": "13590",
+            "description": "GSM Modul har hittat nät! OK.",
+            "classification_code": "45",
+            "classification_name": "Informativ",
+            "is_command": false
+          },
+          "data": "B1359,00001727",
+          "machine_id": "12345",
+          "user_has_read": false,
+          "created_date": "2026-09-21 11:32:46",
+          "created_date_strtotime": 1789983166,
+          "is_command": false
+        }
+      ]
+    },
+    {
+      "info_code": {
+        "info_code": "--",
+        "description": "RLSA=249",
+        "classification_code": "--",
+        "classification_name": "",
+        "is_command": true
+      },
+      "data": "LSA=249",
+      "number_code_hour_messages": 1,
+      "message_list": [
+        {
+          "id": "13237500",
+          "info_code": {
+            "info_code": "--",
+            "description": "RLSA=249",
+            "classification_code": "--",
+            "classification_name": "",
+            "is_command": true
+          },
+          "data": " LSA=249",
+          "machine_id": "12345",
+          "user_has_read": false,
+          "created_date": "2026-09-21 12:02:06",
+          "created_date_strtotime": 1789984926,
+          "is_command": true
+        }
+      ]
+    }
+  ],
+  "COUNT": 2
+}

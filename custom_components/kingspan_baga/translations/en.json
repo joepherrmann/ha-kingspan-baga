@@ -1,0 +1,85 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "description": "Sign in with your mittBAGA account. This unofficial integration talks to the same cloud service as the mittBAGA app.",
+        "data": {
+          "email": "Email",
+          "password": "Password"
+        }
+      },
+      "reauth_confirm": {
+        "description": "The password for {email} no longer works. Enter the new password.",
+        "data": {
+          "password": "Password"
+        }
+      },
+      "reconfigure": {
+        "data": {
+          "email": "Email",
+          "password": "Password"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Invalid authentication",
+      "cannot_connect": "Failed to connect",
+      "unknown": "Unexpected error"
+    },
+    "abort": {
+      "already_configured": "Account is already configured",
+      "reauth_successful": "Re-authentication was successful",
+      "wrong_account": "These credentials belong to a different account."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "scan_interval": "Polling interval",
+          "connectivity_days": "Days without a message before the unit counts as disconnected",
+          "lang": "Language for event descriptions"
+        }
+      }
+    }
+  },
+  "selector": {
+    "lang": {
+      "options": {
+        "auto": "Automatic (Home Assistant language)",
+        "sv": "Swedish",
+        "en": "English"
+      }
+    }
+  },
+  "entity": {
+    "event": {
+      "activity": { "name": "Event" }
+    },
+    "binary_sensor": {
+      "power_failure": { "name": "Power failure" },
+      "flocculant_low": { "name": "Flocculant low" },
+      "tank_filling": { "name": "Tank filling up" },
+      "connectivity": { "name": "GSM connection" }
+    },
+    "sensor": {
+      "last_event": { "name": "Last event" },
+      "last_event_time": { "name": "Last event time" },
+      "last_emptied": { "name": "Last emptied" },
+      "unread_messages": { "name": "Unread messages" },
+      "tank_level": { "name": "Tank level" },
+      "dosing_pump_runtime": { "name": "Dosing pump runtime" },
+      "fuse_f1": { "name": "Fuse F1" },
+      "last_service": { "name": "Last service" },
+      "next_service": { "name": "Next service" }
+    }
+  },
+  "exceptions": {
+    "command_pending": {
+      "message": "A command is already waiting for a reply from the unit."
+    },
+    "command_cooldown": {
+      "message": "Please wait a minute between commands; each one is relayed to the unit (likely by SMS)."
+    }
+  }
+}

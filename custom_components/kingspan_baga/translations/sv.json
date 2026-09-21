@@ -1,0 +1,85 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "description": "Logga in med ditt mittBAGA-konto. Denna inofficiella integration använder samma molntjänst som mittBAGA-appen.",
+        "data": {
+          "email": "E-post",
+          "password": "Lösenord"
+        }
+      },
+      "reauth_confirm": {
+        "description": "Lösenordet för {email} fungerar inte längre. Ange det nya lösenordet.",
+        "data": {
+          "password": "Lösenord"
+        }
+      },
+      "reconfigure": {
+        "data": {
+          "email": "E-post",
+          "password": "Lösenord"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Ogiltiga inloggningsuppgifter",
+      "cannot_connect": "Det gick inte att ansluta",
+      "unknown": "Oväntat fel"
+    },
+    "abort": {
+      "already_configured": "Kontot är redan konfigurerat",
+      "reauth_successful": "Ominloggningen lyckades",
+      "wrong_account": "Uppgifterna tillhör ett annat konto."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "scan_interval": "Uppdateringsintervall",
+          "connectivity_days": "Dagar utan meddelande innan anläggningen räknas som frånkopplad",
+          "lang": "Språk för händelsebeskrivningar"
+        }
+      }
+    }
+  },
+  "selector": {
+    "lang": {
+      "options": {
+        "auto": "Automatiskt (Home Assistants språk)",
+        "sv": "Svenska",
+        "en": "Engelska"
+      }
+    }
+  },
+  "entity": {
+    "event": {
+      "activity": { "name": "Händelse" }
+    },
+    "binary_sensor": {
+      "power_failure": { "name": "Strömavbrott" },
+      "flocculant_low": { "name": "Låg nivå flockningsmedel" },
+      "tank_filling": { "name": "Tanken fylls på" },
+      "connectivity": { "name": "GSM-anslutning" }
+    },
+    "sensor": {
+      "last_event": { "name": "Senaste händelse" },
+      "last_event_time": { "name": "Tid för senaste händelse" },
+      "last_emptied": { "name": "Senast tömd" },
+      "unread_messages": { "name": "Olästa meddelanden" },
+      "tank_level": { "name": "Nivå i tank" },
+      "dosing_pump_runtime": { "name": "Gångtid doserpump" },
+      "fuse_f1": { "name": "Säkring F1" },
+      "last_service": { "name": "Senaste service" },
+      "next_service": { "name": "Nästa service" }
+    }
+  },
+  "exceptions": {
+    "command_pending": {
+      "message": "Ett kommando väntar redan på svar från anläggningen."
+    },
+    "command_cooldown": {
+      "message": "Vänta en minut mellan kommandon; varje kommando skickas till anläggningen (troligen via SMS)."
+    }
+  }
+}

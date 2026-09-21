@@ -1,0 +1,85 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "description": "Log in met je mittBAGA-account. Deze onofficiële integratie praat met dezelfde clouddienst als de mittBAGA-app.",
+        "data": {
+          "email": "E-mail",
+          "password": "Wachtwoord"
+        }
+      },
+      "reauth_confirm": {
+        "description": "Het wachtwoord voor {email} werkt niet meer. Vul het nieuwe wachtwoord in.",
+        "data": {
+          "password": "Wachtwoord"
+        }
+      },
+      "reconfigure": {
+        "data": {
+          "email": "E-mail",
+          "password": "Wachtwoord"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Ongeldige inloggegevens",
+      "cannot_connect": "Kan geen verbinding maken",
+      "unknown": "Onverwachte fout"
+    },
+    "abort": {
+      "already_configured": "Account is al geconfigureerd",
+      "reauth_successful": "Opnieuw inloggen is gelukt",
+      "wrong_account": "Deze inloggegevens horen bij een ander account."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "scan_interval": "Poll-interval",
+          "connectivity_days": "Dagen zonder bericht voordat de unit als offline geldt",
+          "lang": "Taal van de gebeurtenisomschrijvingen"
+        }
+      }
+    }
+  },
+  "selector": {
+    "lang": {
+      "options": {
+        "auto": "Automatisch (taal van Home Assistant)",
+        "sv": "Zweeds",
+        "en": "Engels"
+      }
+    }
+  },
+  "entity": {
+    "event": {
+      "activity": { "name": "Gebeurtenis" }
+    },
+    "binary_sensor": {
+      "power_failure": { "name": "Stroomuitval" },
+      "flocculant_low": { "name": "Vlokmiddel laag" },
+      "tank_filling": { "name": "Tank loopt vol" },
+      "connectivity": { "name": "GSM-verbinding" }
+    },
+    "sensor": {
+      "last_event": { "name": "Laatste gebeurtenis" },
+      "last_event_time": { "name": "Tijd laatste gebeurtenis" },
+      "last_emptied": { "name": "Laatst geleegd" },
+      "unread_messages": { "name": "Ongelezen meldingen" },
+      "tank_level": { "name": "Tankniveau" },
+      "dosing_pump_runtime": { "name": "Looptijd doseerpomp" },
+      "fuse_f1": { "name": "Zekering F1" },
+      "last_service": { "name": "Laatste service" },
+      "next_service": { "name": "Volgende service" }
+    }
+  },
+  "exceptions": {
+    "command_pending": {
+      "message": "Er wacht al een opdracht op antwoord van de unit."
+    },
+    "command_cooldown": {
+      "message": "Wacht een minuut tussen opdrachten; elke opdracht gaat naar de unit (vermoedelijk per sms)."
+    }
+  }
+}
