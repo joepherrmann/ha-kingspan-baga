@@ -48,7 +48,8 @@ folder and restart.
 *Settings → Devices & services → Add integration → Kingspan BAGA* and sign in
 with your mittBAGA account. Options (polling interval, connectivity window,
 description language) are available on the integration afterwards. Polling runs
-every 15 minutes by default (configurable from 5 minutes up to 24 hours).
+hourly by default (configurable from 5 minutes up to 24 hours) — lower it if
+you want faster power-failure alerts.
 
 ## Example automation
 

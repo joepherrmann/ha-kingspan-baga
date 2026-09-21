@@ -141,7 +141,7 @@ De client in v1 **staat in de repo zelf**. Voor HA core moet hij later naar PyPI
 
 ### coordinator.py
 - Eén `DataUpdateCoordinator` per account, met data per machine_id.
-- **Snel (standaard 15 min, instelbaar 5–1440):** `get_user_machines` + `get_messages(limit=20)` per machine.
+- **Snel (standaard 60 min, instelbaar 5–1440):** `get_user_machines` + `get_messages(limit=20)` per machine.
 - **Traag (elke 6 uur, in dezelfde coordinator met een timestamp):** `get_machine_info`, `get_message_types`, `get_commands`.
 - Houdt `last_seen_message_id` per machine bij (**als int vergelijken**: de API geeft strings, en lexicografisch is "999" > "13237434"). Nieuwe berichten gaan naar de event-entiteit.
   - **Allereerste setup** (geen Store-data): alleen de baseline zetten, geen events afvuren.
