@@ -54,24 +54,52 @@
   },
   "entity": {
     "event": {
-      "activity": { "name": "Event" }
+      "activity": {
+        "name": "Event"
+      }
     },
     "binary_sensor": {
-      "power_failure": { "name": "Power failure" },
-      "flocculant_low": { "name": "Flocculant low" },
-      "tank_filling": { "name": "Tank filling up" },
-      "connectivity": { "name": "GSM connection" }
+      "connectivity": {
+        "name": "GSM connection"
+      },
+      "flocculant_low": {
+        "name": "Flocculant low"
+      },
+      "power": {
+        "name": "Power"
+      },
+      "tank_filling": {
+        "name": "Tank filling up"
+      }
     },
     "sensor": {
-      "last_event": { "name": "Last event" },
-      "last_event_time": { "name": "Last event time" },
-      "last_emptied": { "name": "Last emptied" },
-      "unread_messages": { "name": "Unread messages" },
-      "tank_level": { "name": "Tank level" },
-      "dosing_pump_runtime": { "name": "Dosing pump runtime" },
-      "fuse_f1": { "name": "Fuse F1" },
-      "last_service": { "name": "Last service" },
-      "next_service": { "name": "Next service" }
+      "last_event": {
+        "name": "Last event"
+      },
+      "last_event_time": {
+        "name": "Last event time"
+      },
+      "last_emptied": {
+        "name": "Last emptied"
+      },
+      "unread_messages": {
+        "name": "Unread messages"
+      },
+      "tank_level": {
+        "name": "Tank level"
+      },
+      "dosing_pump_runtime": {
+        "name": "Dosing pump runtime"
+      },
+      "fuse_f1": {
+        "name": "Fuse F1"
+      },
+      "last_service": {
+        "name": "Last service"
+      },
+      "next_service": {
+        "name": "Next service"
+      }
     }
   },
   "exceptions": {

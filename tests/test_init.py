@@ -42,9 +42,9 @@ async def test_setup_creates_entities(
     entry = await setup_entry(hass)
     assert entry.state is ConfigEntryState.LOADED
 
-    # Pair states: 13000 (power back) is newer than 13001 → no problem.
-    power = hass.states.get(get_entity_id(hass, f"{MACHINE_ID}_power_failure"))
-    assert power.state == "off"
+    # Pair states: 13000 (power back) is newer than 13001 → mains present.
+    power = hass.states.get(get_entity_id(hass, f"{MACHINE_ID}_power"))
+    assert power.state == "on"
 
     # 11111 (flocculant low) has no newer 11110 → problem.
     floc = hass.states.get(get_entity_id(hass, f"{MACHINE_ID}_flocculant_low"))
@@ -88,9 +88,9 @@ async def test_new_message_fires_event(
     assert event.attributes["event_type"] == "13001"
     assert event.attributes["severity"] == "critical"
 
-    # Power pair flips to problem.
-    power = hass.states.get(get_entity_id(hass, f"{MACHINE_ID}_power_failure"))
-    assert power.state == "on"
+    # Power pair flips: 13001 newest → mains gone.
+    power = hass.states.get(get_entity_id(hass, f"{MACHINE_ID}_power"))
+    assert power.state == "off"
 
     # A second refresh without new messages must not re-fire.
     fired_at = event.attributes["created"]

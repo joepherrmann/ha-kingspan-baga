@@ -54,24 +54,52 @@
   },
   "entity": {
     "event": {
-      "activity": { "name": "Gebeurtenis" }
+      "activity": {
+        "name": "Gebeurtenis"
+      }
     },
     "binary_sensor": {
-      "power_failure": { "name": "Stroomuitval" },
-      "flocculant_low": { "name": "Vlokmiddel laag" },
-      "tank_filling": { "name": "Tank loopt vol" },
-      "connectivity": { "name": "GSM-verbinding" }
+      "connectivity": {
+        "name": "GSM-verbinding"
+      },
+      "flocculant_low": {
+        "name": "Vlokmiddel laag"
+      },
+      "power": {
+        "name": "Stroom"
+      },
+      "tank_filling": {
+        "name": "Tank loopt vol"
+      }
     },
     "sensor": {
-      "last_event": { "name": "Laatste gebeurtenis" },
-      "last_event_time": { "name": "Tijd laatste gebeurtenis" },
-      "last_emptied": { "name": "Laatst geleegd" },
-      "unread_messages": { "name": "Ongelezen meldingen" },
-      "tank_level": { "name": "Tankniveau" },
-      "dosing_pump_runtime": { "name": "Looptijd doseerpomp" },
-      "fuse_f1": { "name": "Zekering F1" },
-      "last_service": { "name": "Laatste service" },
-      "next_service": { "name": "Volgende service" }
+      "last_event": {
+        "name": "Laatste gebeurtenis"
+      },
+      "last_event_time": {
+        "name": "Tijd laatste gebeurtenis"
+      },
+      "last_emptied": {
+        "name": "Laatst geleegd"
+      },
+      "unread_messages": {
+        "name": "Ongelezen meldingen"
+      },
+      "tank_level": {
+        "name": "Tankniveau"
+      },
+      "dosing_pump_runtime": {
+        "name": "Looptijd doseerpomp"
+      },
+      "fuse_f1": {
+        "name": "Zekering F1"
+      },
+      "last_service": {
+        "name": "Laatste service"
+      },
+      "next_service": {
+        "name": "Volgende service"
+      }
     }
   },
   "exceptions": {

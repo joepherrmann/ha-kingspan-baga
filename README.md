@@ -15,7 +15,7 @@ One device per installation on your account, with:
 | Entity | Notes |
 |---|---|
 | Event *Event* | fires for every new machine message (power loss, flocculant low, tank emptied, command replies, …) with `code`, `description`, `severity` attributes |
-| Binary sensor *Power failure* | derived from codes 13001 / 13000 |
+| Binary sensor *Power* | on = mains present, derived from codes 13001 / 13000 |
 | Binary sensor *Flocculant low* | codes 11111 / 11110 (only when the unit doses flocculant) |
 | Binary sensor *Tank filling up* | codes 11140 / 11141 |
 | Binary sensor *GSM connection* | disabled by default; the unit can be silent for weeks, window configurable |
@@ -58,8 +58,8 @@ automation:
   - alias: "Septic tank power failure"
     triggers:
       - trigger: state
-        entity_id: binary_sensor.septic_tank_power_failure
-        to: "on"
+        entity_id: binary_sensor.septic_tank_power
+        to: "off"
     actions:
       - action: notify.mobile_app_phone
         data:

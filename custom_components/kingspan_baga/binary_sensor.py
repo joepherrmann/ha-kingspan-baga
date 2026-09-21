@@ -28,13 +28,21 @@ class BagaBinarySensorDescription(BinarySensorEntityDescription):
     """Describes a BAGA binary sensor."""
 
     exists_fn: Callable[[MachineData], bool] = lambda _: True
+    # Key into CODE_PAIRS; defaults to the entity key.
+    pair_key: str | None = None
+    # Pair state True means the problem code is newest. For the power sensor
+    # we invert: device_class POWER shows on = power present ("Stroom: Aan"),
+    # which reads much clearer than "Power failure: OK".
+    inverted: bool = False
 
 
 PAIR_SENSORS = [
     BagaBinarySensorDescription(
-        key="power_failure",
-        translation_key="power_failure",
-        device_class=BinarySensorDeviceClass.PROBLEM,
+        key="power",
+        translation_key="power",
+        pair_key="power_failure",
+        device_class=BinarySensorDeviceClass.POWER,
+        inverted=True,
     ),
     BagaBinarySensorDescription(
         key="flocculant_low",
@@ -82,16 +90,23 @@ class BagaPairBinarySensor(BagaEntity, BinarySensorEntity):
         self.entity_description = description
 
     @property
+    def _pair_key(self) -> str:
+        return self.entity_description.pair_key or self.entity_description.key
+
+    @property
     def is_on(self) -> bool | None:
         if (data := self.machine_data) is None:
             return None
-        return data.pair_states.get(self.entity_description.key)
+        state = data.pair_states.get(self._pair_key)
+        if state is None:
+            return None
+        return not state if self.entity_description.inverted else state
 
     @property
     def extra_state_attributes(self) -> dict[str, str] | None:
         if (data := self.machine_data) is None:
             return None
-        changed = data.pair_changed.get(self.entity_description.key)
+        changed = data.pair_changed.get(self._pair_key)
         return {"changed": changed.isoformat()} if changed else None
 
 
