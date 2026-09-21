@@ -241,7 +241,7 @@ DeviceInfo: `manufacturer="Kingspan BAGA"`, `model=machine_type.name`, `name=add
    - ~~de semantiek van `start_row`/`limit`~~ Beantwoord 21-9: voorbij het einde van de historie geeft de server een fout ("Inga meddelanden hittade") in plaats van een lege lijst; de paginering breekt daar nu op af (v0.1.1)
    - één druk op "Tankniveau opvragen" → snelle modus → sensor
 4. **Een paar dagen draaien.** Kijken of events dubbel binnenkomen of gemist worden en of er in de log fouten staan over de rate limit.
-4b. **Icoon:** PR naar `home-assistant/brands` met een generiek icoon voor `kingspan_baga` (geen Kingspan-logo). Alleen na akkoord van Joep.
+4b. **Icoon:** ~~PR naar home-assistant/brands~~ (die accepteert sinds 2-2026 geen custom integrations meer). Sinds HA 2026.3 lokaal: eigen druppel-icoon (geen Kingspan-logo) in `custom_components/kingspan_baga/brand/` (icon.png 256 + icon@2x.png 512, bron icon.svg). Gedaan in v0.1.2.
 5. **Publiceren** (na akkoord): repo `joepherrmann/ha-kingspan-baga` publiek, topics `home-assistant`, `hacs`,
    `home-assistant-custom-component`, release v0.1.0. Eventueel later een PR naar HACS default en `home-assistant/brands`.
 6. **Automatiseringen voor het huisje** (apart, in Joeps HA): meldingen bij stroomuitval, vlokmiddel laag en tank vol, plus een

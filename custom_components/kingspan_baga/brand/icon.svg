@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <clipPath id="dropInner">
+      <path d="M128 34 C128 34 62 116 62 162 a66 66 0 0 0 132 0 C194 116 128 34 128 34 Z"/>
+    </clipPath>
+  </defs>
+  <!-- druppelomtrek -->
+  <path d="M128 22 C128 22 52 112 52 162 a76 76 0 0 0 152 0 C204 112 128 22 128 22 Z"
+        fill="none" stroke="#16437E" stroke-width="16" stroke-linejoin="round"/>
+  <!-- golf in de druppel -->
+  <g clip-path="url(#dropInner)">
+    <path d="M52 158 Q 72 146 91 158 T 128 158 T 165 158 T 204 158 L204 240 L52 240 Z"
+          fill="#2E8FD5"/>
+  </g>
+</svg>
