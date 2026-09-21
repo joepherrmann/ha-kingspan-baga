@@ -73,32 +73,41 @@
       }
     },
     "sensor": {
-      "last_event": {
-        "name": "Last event"
-      },
-      "last_event_time": {
-        "name": "Last event time"
-      },
-      "last_emptied": {
-        "name": "Last emptied"
-      },
-      "unread_messages": {
-        "name": "Unread messages"
-      },
-      "tank_level": {
-        "name": "Tank level"
-      },
       "dosing_pump_runtime": {
         "name": "Dosing pump runtime"
       },
       "fuse_f1": {
         "name": "Fuse F1"
       },
+      "last_emptied": {
+        "name": "Last emptied"
+      },
+      "last_event": {
+        "name": "Last event"
+      },
+      "last_event_time": {
+        "name": "Last event time"
+      },
       "last_service": {
         "name": "Last service"
       },
       "next_service": {
         "name": "Next service"
+      },
+      "status": {
+        "name": "Status",
+        "state": {
+          "ok": "OK",
+          "power_failure": "Power failure",
+          "tank_filling": "Tank filling up",
+          "flocculant_low": "Flocculant low"
+        }
+      },
+      "tank_level": {
+        "name": "Tank level"
+      },
+      "unread_messages": {
+        "name": "Unread messages"
       }
     }
   },

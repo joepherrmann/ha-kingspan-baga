@@ -19,6 +19,7 @@ One device per installation on your account, with:
 | Binary sensor *Flocculant low* | codes 11111 / 11110 (only when the unit doses flocculant) |
 | Binary sensor *Tank filling up* | codes 11140 / 11141 |
 | Binary sensor *GSM connection* | disabled by default; the unit can be silent for weeks, window configurable |
+| Sensor *Status* | one entity for dashboards: `ok` or the most severe active problem; all active problems as an attribute |
 | Sensor *Last event* + *Last event time* | newest message |
 | Sensor *Last emptied* | newest tank-emptied message |
 | Sensor *Unread messages* | as counted by the app |
@@ -57,6 +58,32 @@ Kingspan charges for SMS alerts; Home Assistant push notifications are free.
 Import the ready-made blueprint and pick your BAGA sensors and your phone:
 
 [![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fjoepherrmann%2Fha-kingspan-baga%2Fblob%2Fmain%2Fblueprints%2Fkingspan_baga_alerts.yaml)
+
+## Dashboard example
+
+The *Status* sensor is made for dashboards — one entity that is `OK` or the
+most severe active problem:
+
+```yaml
+type: tile
+entity: sensor.septic_tank_status
+name: Septic tank
+```
+
+Or as an alert that only appears when something is wrong:
+
+```yaml
+type: conditional
+conditions:
+  - condition: state
+    entity: sensor.septic_tank_status
+    state_not: "ok"
+card:
+  type: markdown
+  content: >-
+    ## ⚠️ Septic tank: {{ states('sensor.septic_tank_status') }}
+    Last event: {{ states('sensor.septic_tank_last_event') }}
+```
 
 Or roll your own automation:
 

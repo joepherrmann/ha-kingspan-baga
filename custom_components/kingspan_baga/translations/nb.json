@@ -73,32 +73,41 @@
       }
     },
     "sensor": {
-      "last_event": {
-        "name": "Siste hendelse"
-      },
-      "last_event_time": {
-        "name": "Tid for siste hendelse"
-      },
-      "last_emptied": {
-        "name": "Sist tømt"
-      },
-      "unread_messages": {
-        "name": "Uleste meldinger"
-      },
-      "tank_level": {
-        "name": "Nivå i tank"
-      },
       "dosing_pump_runtime": {
         "name": "Driftstid doseringspumpe"
       },
       "fuse_f1": {
         "name": "Sikring F1"
       },
+      "last_emptied": {
+        "name": "Sist tømt"
+      },
+      "last_event": {
+        "name": "Siste hendelse"
+      },
+      "last_event_time": {
+        "name": "Tid for siste hendelse"
+      },
       "last_service": {
         "name": "Siste service"
       },
       "next_service": {
         "name": "Neste service"
+      },
+      "status": {
+        "name": "Status",
+        "state": {
+          "ok": "OK",
+          "power_failure": "Strømbrudd",
+          "tank_filling": "Tanken fylles opp",
+          "flocculant_low": "Lavt nivå fellingsmiddel"
+        }
+      },
+      "tank_level": {
+        "name": "Nivå i tank"
+      },
+      "unread_messages": {
+        "name": "Uleste meldinger"
       }
     }
   },

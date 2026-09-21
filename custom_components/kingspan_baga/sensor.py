@@ -43,7 +43,29 @@ class BagaSensorDescription(SensorEntityDescription):
     exists_fn: Callable[[MachineData], bool] = lambda _: True
 
 
+STATUS_OK = "ok"
+# Highest-severity active problem wins; the full list is an attribute.
+STATUS_PRIORITY = ["power_failure", "tank_filling", "flocculant_low"]
+
+
+def _status_value(data: MachineData) -> str:
+    for key in STATUS_PRIORITY:
+        if data.pair_states.get(key):
+            return key
+    return STATUS_OK
+
+
 SENSORS = [
+    BagaSensorDescription(
+        key="status",
+        translation_key="status",
+        device_class=SensorDeviceClass.ENUM,
+        options=[STATUS_OK, *STATUS_PRIORITY],
+        value_fn=_status_value,
+        attributes_fn=lambda d: {
+            "active_problems": [k for k, v in d.pair_states.items() if v]
+        },
+    ),
     BagaSensorDescription(
         key="last_event",
         translation_key="last_event",

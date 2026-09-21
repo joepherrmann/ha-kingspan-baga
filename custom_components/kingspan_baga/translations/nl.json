@@ -73,32 +73,41 @@
       }
     },
     "sensor": {
-      "last_event": {
-        "name": "Laatste gebeurtenis"
-      },
-      "last_event_time": {
-        "name": "Tijd laatste gebeurtenis"
-      },
-      "last_emptied": {
-        "name": "Laatst geleegd"
-      },
-      "unread_messages": {
-        "name": "Ongelezen meldingen"
-      },
-      "tank_level": {
-        "name": "Tankniveau"
-      },
       "dosing_pump_runtime": {
         "name": "Looptijd doseerpomp"
       },
       "fuse_f1": {
         "name": "Zekering F1"
       },
+      "last_emptied": {
+        "name": "Laatst geleegd"
+      },
+      "last_event": {
+        "name": "Laatste gebeurtenis"
+      },
+      "last_event_time": {
+        "name": "Tijd laatste gebeurtenis"
+      },
       "last_service": {
         "name": "Laatste service"
       },
       "next_service": {
         "name": "Volgende service"
+      },
+      "status": {
+        "name": "Status",
+        "state": {
+          "ok": "OK",
+          "power_failure": "Stroomuitval",
+          "tank_filling": "Tank loopt vol",
+          "flocculant_low": "Vlokmiddel laag"
+        }
+      },
+      "tank_level": {
+        "name": "Tankniveau"
+      },
+      "unread_messages": {
+        "name": "Ongelezen meldingen"
       }
     }
   },

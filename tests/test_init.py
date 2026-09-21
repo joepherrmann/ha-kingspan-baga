@@ -63,6 +63,11 @@ async def test_setup_creates_entities(
     emptied = hass.states.get(get_entity_id(hass, f"{MACHINE_ID}_last_emptied"))
     assert emptied.state != "unknown"
 
+    # Flocculant low is the only active problem right now.
+    status = hass.states.get(get_entity_id(hass, f"{MACHINE_ID}_status"))
+    assert status.state == "flocculant_low"
+    assert status.attributes["active_problems"] == ["flocculant_low"]
+
     # Very first refresh sets the baseline without firing historic events.
     event = hass.states.get(get_entity_id(hass, f"{MACHINE_ID}_activity"))
     assert event.state == "unknown"
@@ -91,6 +96,10 @@ async def test_new_message_fires_event(
     # Power pair flips: 13001 newest → mains gone.
     power = hass.states.get(get_entity_id(hass, f"{MACHINE_ID}_power"))
     assert power.state == "off"
+
+    # Power failure outranks the flocculant problem in the status sensor.
+    status = hass.states.get(get_entity_id(hass, f"{MACHINE_ID}_status"))
+    assert status.state == "power_failure"
 
     # A second refresh without new messages must not re-fire.
     fired_at = event.attributes["created"]
